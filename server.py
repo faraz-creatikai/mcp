@@ -23,7 +23,5 @@ def send_lead_to_n8n(name: str, email: str) -> str:
         return f"Failed to send data to n8n. Error: {str(e)}"
 
 if __name__ == "__main__":
-    # Get Render's dynamic port, or default to 8000 if running locally
     port = int(os.environ.get("PORT", 8000))
-    # Run on 0.0.0.0 so external networks can connect to it
-    mcp.run(transport="sse", host="0.0.0.0", port=port)
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
